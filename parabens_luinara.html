@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Aniversário Luinara 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rose:     #c4607b;
+  --rose-lt:  #f4a7bb;
+  --rose-pale:#f9c8d4;
+  --cream:    #ffe8ef;
+  --bg1:      #120609;
+  --bg2:      #27091a;
+  --text:     #ffe8ef;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  min-height:100vh;
+  background:radial-gradient(ellipse at 20% 30%,#2e0d1c 0%,var(--bg1) 60%),
+             radial-gradient(ellipse at 80% 80%,#1e0a14 0%,transparent 60%);
+  background-color:var(--bg1);
+  font-family:'Jost',sans-serif;
+  overflow-x:hidden;
+  color:var(--text);
+  cursor:default;
+}
+
+/* ── PARTICLES ── */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.petal{position:absolute;border-radius:50% 0 50% 0;opacity:0;animation:fall linear infinite;}
+@keyframes fall{
+  0%  {transform:translateY(-30px) rotate(0deg);  opacity:.8;}
+  100%{transform:translateY(110vh) rotate(800deg);opacity:0;}
+}
+.sparkle{position:absolute;border-radius:50%;background:var(--rose-pale);opacity:0;animation:twinkle ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.3);}50%{opacity:.9;transform:scale(1.5);}}
+.fheart{position:fixed;bottom:-50px;opacity:0;animation:floatUp linear infinite;pointer-events:none;z-index:0;}
+@keyframes floatUp{0%{transform:translateY(0) scale(.5);opacity:.65;}80%{opacity:.3;}100%{transform:translateY(-110vh) scale(1);opacity:0;}}
+
+/* ── PAGE ── */
+.page{position:relative;z-index:1;max-width:740px;margin:0 auto;padding:4rem 1.5rem 7rem;}
+.center{text-align:center;}
+
+/* ── HEADER ── */
+.chip{
+  display:inline-block;font-size:.68rem;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--rose-lt);border:1px solid rgba(244,167,187,.28);padding:5px 20px;
+  border-radius:50px;margin-bottom:1.6rem;
+  opacity:0;animation:fadeUp .9s ease forwards .2s;
+}
+.main-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,10vw,6.5rem);
+  font-weight:600;color:#fff;line-height:1.05;
+  opacity:0;animation:fadeUp 1s ease forwards .5s;
+  text-shadow:0 0 90px rgba(244,100,140,.3);
+  margin-bottom:.6rem;
+}
+.main-title em{color:var(--rose-lt);font-style:italic;}
+.tagline{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(1.1rem,3.5vw,1.75rem);color:rgba(244,194,206,.85);
+  margin:1rem 0 3rem;
+  opacity:0;animation:fadeUp 1s ease forwards .8s;
+}
+.div-row{
+  display:flex;align-items:center;gap:14px;max-width:360px;margin:0 auto 3.5rem;
+  opacity:0;animation:fadeUp .9s ease forwards 1s;
+}
+.div-row::before,.div-row::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(244,167,187,.45),transparent);}
+.div-icon{font-size:1rem;color:var(--rose-lt);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* ── GLITTER ── */
+.glitter{
+  width:100%;height:1px;margin:3rem 0;
+  background:linear-gradient(90deg,transparent,var(--rose-lt),#fff9fb,var(--rose-lt),transparent);
+  background-size:300%;
+  animation:shimmer 4s linear infinite;opacity:.35;
+}
+@keyframes shimmer{0%{background-position:0%;}100%{background-position:300%;}}
+
+/* ── CAKE ── */
+.cake-wrap{margin-bottom:4rem;text-align:center;}
+.cake-svg{
+  filter:drop-shadow(0 0 32px rgba(244,100,140,.28));
+  animation:cakePop .85s cubic-bezier(.34,1.56,.64,1) forwards 1.2s;
+  opacity:0;transform:scale(.65);cursor:pointer;
+}
+@keyframes cakePop{to{opacity:1;transform:scale(1);}}
+.flame{animation:flicker .78s ease-in-out infinite;transform-origin:bottom center;}
+@keyframes flicker{
+  0%,100%{transform:scaleY(1)   translateX(0);  opacity:1;}
+  25%    {transform:scaleY(1.13)translateX(1px); opacity:.84;}
+  50%    {transform:scaleY(.87) translateX(-1px);opacity:.9;}
+  75%    {transform:scaleY(1.07)translateX(.5px);opacity:.95;}
+}
+.cake-hint{font-size:.7rem;color:rgba(244,167,187,.4);letter-spacing:.18em;margin-top:.8rem;}
+
+/* ── STATS ── */
+.stats-row{display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-bottom:4rem;}
+.stat-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(244,167,187,.16);
+  border-radius:20px;padding:1.3rem 2.2rem;min-width:115px;
+  transition:transform .35s,background .35s,box-shadow .35s;
+}
+.stat-card:hover{transform:translateY(-7px);background:rgba(244,167,187,.09);box-shadow:0 12px 32px rgba(196,96,123,.15);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--rose-lt);display:block;line-height:1;}
+.stat-lbl{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,199,207,.6);margin-top:6px;}
+
+/* ── SECTION TITLE ── */
+.sec-title{font-size:.72rem;letter-spacing:.36em;text-transform:uppercase;color:var(--rose-lt);margin-bottom:2.2rem;text-align:center;}
+
+/* ── TIMELINE VERTICAL ── */
+.tl-wrap{position:relative;padding:.5rem 0 2rem;}
+.tl-spine{
+  position:absolute;left:50%;top:0;width:1px;
+  background:linear-gradient(to bottom,transparent,rgba(244,167,187,.5) 10%,rgba(244,167,187,.5) 90%,transparent);
+  transform:translateX(-50%);height:0;
+  transition:height 2s cubic-bezier(.22,1,.36,1);
+}
+.tl-spine.grow{height:100%;}
+
+.tl-item{
+  display:flex;align-items:flex-start;
+  margin-bottom:2.8rem;position:relative;
+  opacity:0;transition:opacity .75s ease,transform .75s ease;
+}
+.tl-item.from-left {transform:translateX(-36px);}
+.tl-item.from-right{transform:translateX(36px); flex-direction:row-reverse;}
+.tl-item.visible   {opacity:1;transform:none;}
+
+.tl-side{flex:1;padding:0 22px;}
+.tl-item.from-left  .tl-side{text-align:right;}
+.tl-item.from-right .tl-side{text-align:left;}
+
+.tl-dot-wrap{display:flex;flex-direction:column;align-items:center;flex-shrink:0;z-index:2;}
+.tl-dot{
+  width:16px;height:16px;border-radius:50%;
+  background:radial-gradient(circle,var(--rose-pale),var(--rose));
+  border:2px solid var(--rose-lt);
+  box-shadow:0 0 10px rgba(244,167,187,.55);
+  animation:dotPulse 2.4s ease-in-out infinite;
+  transition:transform .3s;
+}
+.tl-item:hover .tl-dot{transform:scale(1.45);}
+@keyframes dotPulse{0%,100%{box-shadow:0 0 0 0 rgba(244,167,187,.65);}55%{box-shadow:0 0 0 9px rgba(244,167,187,0);}}
+
+.tl-connector{
+  height:2px;width:22px;flex-shrink:0;margin-top:9px;
+  background:linear-gradient(to right,rgba(244,167,187,.45),transparent);
+}
+.tl-item.from-right .tl-connector{background:linear-gradient(to left,rgba(244,167,187,.45),transparent);}
+
+/* card */
+.tl-card{
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(244,167,187,.16);
+  border-radius:18px;overflow:hidden;
+  transition:transform .38s,box-shadow .38s;
+}
+.tl-card:hover{transform:translateY(-5px) scale(1.015);box-shadow:0 14px 38px rgba(196,96,123,.18);}
+
+.tl-photo{
+  width:100%;aspect-ratio:4/3;
+  background:rgba(255,255,255,.03);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  cursor:pointer;position:relative;overflow:hidden;
+}
+.tl-photo img{width:100%;height:100%;object-fit:cover;display:none;transition:transform .5s;}
+.tl-card:hover .tl-photo img{transform:scale(1.06);}
+.tl-photo input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.ph-icon{font-size:1.5rem;transition:transform .3s;color:rgba(244,167,187,.6);}
+.tl-photo:hover .ph-icon{transform:scale(1.18);}
+.ph-txt{font-size:.64rem;color:rgba(244,167,187,.4);margin-top:5px;letter-spacing:.06em;}
+
+/* ── CARD FOOTER — texto fixo, só visível, editável no HTML ── */
+.tl-foot{padding:.85rem 1.1rem 1rem;border-top:1px solid rgba(244,167,187,.1);}
+
+/* data */
+.tl-date{
+  font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--rose-lt);margin-bottom:5px;display:block;
+}
+/* legenda */
+.tl-caption{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:.97rem;color:var(--cream);line-height:1.55;display:block;
+}
+
+/* ── MENSAGEM ESPECIAL ── */
+.msg-wrap{
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(244,167,187,.17);
+  border-radius:24px;padding:2.6rem 2.4rem;
+  position:relative;overflow:hidden;margin-bottom:4rem;
+  text-align:center;
+}
+.msg-wrap::before{
+  content:'❝';position:absolute;top:8px;left:18px;
+  font-size:5.5rem;color:rgba(244,167,187,.08);
+  font-family:'Cormorant Garamond',serif;line-height:1;pointer-events:none;
+}
+.msg-lbl{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--rose-lt);margin-bottom:1.4rem;}
+
+/* ── MENSAGEM — edite o texto entre as tags <p class="msg-body"> ── */
+.msg-body{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(1.05rem,2.6vw,1.35rem);
+  color:var(--cream);line-height:1.9;
+  position:relative;z-index:1;
+}
+
+/* ── FOOTER ── */
+.footer-heart{font-size:2.6rem;animation:heartbeat 1.5s ease-in-out infinite;display:inline-block;margin-top:2rem;}
+@keyframes heartbeat{0%,100%{transform:scale(1);}14%{transform:scale(1.32);}28%{transform:scale(1);}42%{transform:scale(1.2);}70%{transform:scale(1);}}
+
+/* ── UTILS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:520px){
+  .tl-spine{left:18px;}
+  .tl-item,.tl-item.from-right{flex-direction:column;align-items:flex-start;padding-left:38px;}
+  .tl-item .tl-dot-wrap{position:absolute;left:18px;transform:translateX(-50%);top:0;}
+  .tl-side{text-align:left!important;width:100%;padding:0;}
+  .tl-connector{display:none;}
+  .tl-item.from-right{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<div id="particles"></div>
+<canvas id="cc" style="position:fixed;inset:0;pointer-events:none;z-index:0;width:100%;height:100%;"></canvas>
+
+<div class="page center">
+
+  <!-- ═══════════════════════════════════
+       CABEÇALHO
+       Troque o texto do chip, título e tagline abaixo
+  ════════════════════════════════════ -->
+  <div class="chip">✦ Um dia muito especial ✦</div>
+
+  <h1 class="main-title">
+    Feliz Aniversário,<br>
+    <em>Luinara</em>!
+  </h1>
+
+  <p class="tagline">
+    Que o seu dia seja tão luminoso quanto o seu nome 🌹
+  </p>
+
+  <div class="div-row"><span class="div-icon">❀</span></div>
+
+  <!-- ═══════════════════════════════════
+       BOLO — clique para confetes
+  ════════════════════════════════════ -->
+  <div class="cake-wrap reveal">
+    <svg class="cake-svg" id="cakeSvg" width="200" height="220" viewBox="0 0 200 220"
+         fill="none" xmlns="http://www.w3.org/2000/svg" onclick="cakeClick(event)">
+      <ellipse cx="100" cy="198" rx="86" ry="13" fill="#3a0d20" opacity=".5"/>
+      <rect x="14" y="148" width="172" height="52" rx="12" fill="#c4607b"/>
+      <rect x="14" y="148" width="172" height="16" rx="8" fill="#e07f97"/>
+      <rect x="14" y="188" width="172" height="12" fill="#a84d66" opacity=".4"/>
+      <circle cx="52"  cy="172" r="6" fill="#ffe8ef" opacity=".5"/>
+      <circle cx="100" cy="178" r="5" fill="#ffe8ef" opacity=".4"/>
+      <circle cx="148" cy="172" r="6" fill="#ffe8ef" opacity=".5"/>
+      <text x="76" y="170" font-size="13" fill="#fff" opacity=".45">♥</text>
+      <rect x="34" y="100" width="132" height="50" rx="10" fill="#e07f97"/>
+      <rect x="34" y="100" width="132" height="14" rx="7" fill="#f4a7bb"/>
+      <text x="72" y="130" font-size="16" fill="#fff" opacity=".6">♥</text>
+      <text x="104" y="124" font-size="11" fill="#fff" opacity=".4">♥</text>
+      <rect x="60" y="62" width="80" height="40" rx="9" fill="#f4a7bb"/>
+      <rect x="60" y="62" width="80" height="12" rx="6" fill="#f9c8d4"/>
+      <rect x="82" y="46" width="5" height="18" rx="2.5" fill="#f9c8d4"/>
+      <g class="flame" style="animation-delay:0s">
+        <ellipse cx="84" cy="40" rx="5.5" ry="8"   fill="#FFD700"/>
+        <ellipse cx="84" cy="42" rx="3.5" ry="5"   fill="#FF8C00"/>
+      </g>
+      <rect x="97" y="42" width="5" height="22" rx="2.5" fill="#c4607b"/>
+      <g class="flame" style="animation-delay:.22s">
+        <ellipse cx="99" cy="36" rx="5.5" ry="9"   fill="#FFD700"/>
+        <ellipse cx="99" cy="38" rx="3.5" ry="5.5" fill="#FF8C00"/>
+      </g>
+      <rect x="112" y="46" width="5" height="18" rx="2.5" fill="#f9c8d4"/>
+      <g class="flame" style="animation-delay:.44s">
+        <ellipse cx="114" cy="40" rx="5.5" ry="8"  fill="#FFD700"/>
+        <ellipse cx="114" cy="42" rx="3.5" ry="5"  fill="#FF8C00"/>
+      </g>
+    </svg>
+    <p class="cake-hint">✦ clique no bolo ✦</p>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       STATS — troque os números/emojis
+  ════════════════════════════════════ -->
+  <div class="stats-row reveal">
+    <div class="stat-card">
+      <!-- Troque o número de anos aqui -->
+      <span class="stat-num" id="s1">0</span>
+      <span class="stat-lbl">Anos</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">∞</span>
+      <span class="stat-lbl">Amor</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">💕</span>
+      <span class="stat-lbl">Saudade</span>
+    </div>
+  </div>
+
+  <div class="glitter"></div>
+
+  <!-- ═══════════════════════════════════
+       LINHA DO TEMPO + FOTOS
+       Cada .tl-item = 1 memória
+       • Adicione a foto clicando no card
+       • Troque a .tl-date e .tl-caption
+         diretamente aqui no HTML
+  ════════════════════════════════════ -->
+  <p class="sec-title reveal">✦ Nossas memórias ✦</p>
+
+  <div class="tl-wrap reveal" id="tlWrap">
+    <div class="tl-spine" id="tlSpine"></div>
+
+    <!-- MEMÓRIA 1 — lado esquerdo -->
+    <div class="tl-item from-left" id="tli0">
+      <div class="tl-side">
+        <div class="tl-card">
+          <div class="tl-photo" onclick="triggerUpload(0)">
+            <span class="ph-icon">📷</span>
+            <span class="ph-txt">Adicionar foto</span>
+            <input type="file" accept="image/*" onchange="loadPhoto(this,0)">
+          </div>
+          <div class="tl-foot">
+            <!-- ✏️ Edite a data e legenda desta memória aqui -->
+            <span class="tl-date">Momento 1</span>
+            <span class="tl-caption">Uma lembrança muito especial entre nós dois 🌸</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-connector"></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <!-- MEMÓRIA 2 — lado direito -->
+    <div class="tl-item from-right" id="tli1">
+      <div class="tl-side">
+        <div class="tl-card">
+          <div class="tl-photo" onclick="triggerUpload(1)">
+            <span class="ph-icon">📷</span>
+            <span class="ph-txt">Adicionar foto</span>
+            <input type="file" accept="image/*" onchange="loadPhoto(this,1)">
+          </div>
+          <div class="tl-foot">
+            <!-- ✏️ Edite a data e legenda desta memória aqui -->
+            <span class="tl-date">Momento 2</span>
+            <span class="tl-caption">Aquele dia que não consigo esquecer 💫</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-connector"></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <!-- MEMÓRIA 3 — lado esquerdo -->
+    <div class="tl-item from-left" id="tli2">
+      <div class="tl-side">
+        <div class="tl-card">
+          <div class="tl-photo" onclick="triggerUpload(2)">
+            <span class="ph-icon">📷</span>
+            <span class="ph-txt">Adicionar foto</span>
+            <input type="file" accept="image/*" onchange="loadPhoto(this,2)">
+          </div>
+          <div class="tl-foot">
+            <!-- ✏️ Edite a data e legenda desta memória aqui -->
+            <span class="tl-date">Momento 3</span>
+            <span class="tl-caption">Sorrisos que guardo no coração 💗</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-connector"></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <!-- MEMÓRIA 4 — lado direito -->
+    <div class="tl-item from-right" id="tli3">
+      <div class="tl-side">
+        <div class="tl-card">
+          <div class="tl-photo" onclick="triggerUpload(3)">
+            <span class="ph-icon">📷</span>
+            <span class="ph-txt">Adicionar foto</span>
+            <input type="file" accept="image/*" onchange="loadPhoto(this,3)">
+          </div>
+          <div class="tl-foot">
+            <!-- ✏️ Edite a data e legenda desta memória aqui -->
+            <span class="tl-date">Momento 4</span>
+            <span class="tl-caption">Cada momento ao seu lado é perfeito ✨</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-connector"></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <!-- MEMÓRIA 5 — lado esquerdo -->
+    <div class="tl-item from-left" id="tli4">
+      <div class="tl-side">
+        <div class="tl-card">
+          <div class="tl-photo" onclick="triggerUpload(4)">
+            <span class="ph-icon">📷</span>
+            <span class="ph-txt">Adicionar foto</span>
+            <input type="file" accept="image/*" onchange="loadPhoto(this,4)">
+          </div>
+          <div class="tl-foot">
+            <!-- ✏️ Edite a data e legenda desta memória aqui -->
+            <span class="tl-date">Momento 5</span>
+            <span class="tl-caption">Aventuras que só existem com você 🌹</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-connector"></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <!-- MEMÓRIA 6 — lado direito -->
+    <div class="tl-item from-right" id="tli5">
+      <div class="tl-side">
+        <div class="tl-card">
+          <div class="tl-photo" onclick="triggerUpload(5)">
+            <span class="ph-icon">📷</span>
+            <span class="ph-txt">Adicionar foto</span>
+            <input type="file" accept="image/*" onchange="loadPhoto(this,5)">
+          </div>
+          <div class="tl-foot">
+            <!-- ✏️ Edite a data e legenda desta memória aqui -->
+            <span class="tl-date">Hoje</span>
+            <span class="tl-caption">Feliz aniversário, meu amor! Te amo infinito 💕</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-connector"></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div style="flex:1"></div>
+    </div>
+
+  </div><!-- /tl-wrap -->
+
+  <div class="glitter"></div>
+
+  <!-- ═══════════════════════════════════
+       MENSAGEM ESPECIAL
+       Troque o texto dentro de <p class="msg-body">
+  ════════════════════════════════════ -->
+  <div class="msg-wrap reveal">
+    <p class="msg-lbl">✦ Mensagem especial ✦</p>
+
+    <!-- ✏️ Edite a mensagem aqui -->
+    <p class="msg-body">
+      Hoje é o dia de celebrar a pessoa mais linda e especial da minha vida.
+      Você ilumina cada dia com seu sorriso e enche meu coração de alegria.
+      Que esse aniversário seja incrível, assim como você é para mim.
+      Te amo infinito! 💕
+    </p>
+  </div>
+
+  <div class="footer-heart">💕</div>
+
+</div><!-- /page -->
+
+<script>
+/* ── PARTICLES ── */
+const pc   = document.getElementById('particles');
+const cols = ['#f9c8d4','#f4a7bb','#e07f97','#c4607b','#ffeef3','#ffd4de'];
+
+for (let i = 0; i < 36; i++) {
+  const p = document.createElement('div');
+  p.className = 'petal';
+  p.style.cssText = `
+    left:${Math.random()*100}%;
+    top:${Math.random()*-20}%;
+    background:${cols[Math.floor(Math.random()*cols.length)]};
+    animation-duration:${5+Math.random()*10}s;
+    animation-delay:${Math.random()*12}s;
+    width:${6+Math.random()*9}px;
+    height:${9+Math.random()*11}px;
+    transform:rotate(${Math.random()*360}deg);
+  `;
+  pc.appendChild(p);
+}
+
+for (let i = 0; i < 60; i++) {
+  const s = document.createElement('div');
+  s.className = 'sparkle';
+  s.style.cssText = `
+    left:${Math.random()*100}%;
+    top:${Math.random()*100}%;
+    animation-duration:${1.8+Math.random()*3.5}s;
+    animation-delay:${Math.random()*7}s;
+    width:${2+Math.random()*4}px;
+    height:${2+Math.random()*4}px;
+  `;
+  pc.appendChild(s);
+}
+
+['💕','💗','🌸','✨','💓','💖'].forEach(e => {
+  for (let j = 0; j < 2; j++) {
+    const h = document.createElement('div');
+    h.className = 'fheart';
+    h.textContent = e;
+    h.style.cssText = `
+      left:${Math.random()*100}%;
+      animation-duration:${10+Math.random()*14}s;
+      animation-delay:${Math.random()*20}s;
+      font-size:${.85+Math.random()*.95}rem;
+    `;
+    document.body.appendChild(h);
+  }
+});
+
+/* ── SCROLL REVEAL — geral ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: .1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── SCROLL REVEAL — itens da timeline com stagger ── */
+const tlObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = parseInt(e.target.id.replace('tli',''));
+      setTimeout(() => e.target.classList.add('visible'), idx * 150);
+    }
+  });
+}, { threshold: .12 });
+for (let i = 0; i < 6; i++) {
+  const el = document.getElementById('tli' + i);
+  if (el) tlObs.observe(el);
+}
+
+/* ── SPINE GROW ── */
+const spineObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) document.getElementById('tlSpine').classList.add('grow');
+  });
+}, { threshold: .04 });
+spineObs.observe(document.getElementById('tlWrap'));
+
+/* ── STATS COUNTER ── */
+// Troque o número 21 pelo número de anos correto
+const TARGET = 21;
+let count = 0;
+const s1 = document.getElementById('s1');
+function animCount() {
+  if (count < TARGET) { count++; s1.textContent = count; setTimeout(animCount, 60); }
+}
+setTimeout(animCount, 1400);
+
+/* ── CONFETTI ── */
+const canvas = document.getElementById('cc');
+const ctx    = canvas.getContext('2d');
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+
+let pieces = [];
+function spawnConfetti(x, y, n = 90) {
+  for (let i = 0; i < n; i++) {
+    pieces.push({
+      x, y,
+      vx: (Math.random() - .5) * 11,
+      vy: -7 - Math.random() * 7,
+      r:   3 + Math.random() * 5,
+      color: cols[Math.floor(Math.random() * cols.length)],
+      alpha: 1, g: .22,
+      rot: Math.random() * 360, rv: (Math.random() - .5) * 10
+    });
+  }
+  if (pieces.length <= n) requestAnimationFrame(drawC);
+}
+function drawC() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  pieces = pieces.filter(p => p.alpha > .01);
+  pieces.forEach(p => {
+    p.x += p.vx; p.y += p.vy; p.vy += p.g; p.alpha -= .013; p.rot += p.rv;
+    ctx.save();
+    ctx.globalAlpha = p.alpha;
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot * Math.PI / 180);
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, p.r, p.r * .5, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  });
+  if (pieces.length > 0) requestAnimationFrame(drawC);
+}
+
+/* ── CAKE BOUNCE ── */
+function cakeClick(e) {
+  const svg = document.getElementById('cakeSvg');
+  const r   = svg.getBoundingClientRect();
+  spawnConfetti(r.left + r.width / 2, r.top + r.height / 2, 90);
+  svg.style.transition = 'transform .15s ease';
+  svg.style.transform  = 'scale(1.14)';
+  setTimeout(() => { svg.style.transform = 'scale(.95)'; }, 150);
+  setTimeout(() => { svg.style.transform = 'scale(1.06)'; }, 280);
+  setTimeout(() => { svg.style.transform = 'scale(1)'; svg.style.transition = 'transform .35s ease'; }, 400);
+}
+
+/* ── PHOTOS ── */
+function loadPhoto(input, idx) {
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const slot = document.querySelectorAll('.tl-photo')[idx];
+    let img = slot.querySelector('img');
+    if (!img) { img = document.createElement('img'); slot.insertBefore(img, slot.querySelector('input')); }
+    img.src = e.target.result;
+    img.style.opacity = '0'; img.style.transform = 'scale(.88)'; img.style.display = 'block';
+    setTimeout(() => {
+      img.style.transition = 'opacity .55s ease, transform .55s ease';
+      img.style.opacity    = '1';
+      img.style.transform  = 'scale(1)';
+    }, 30);
+    slot.querySelector('.ph-icon').style.display = 'none';
+    slot.querySelector('.ph-txt').style.display  = 'none';
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+function triggerUpload(idx) {
+  document.querySelectorAll('.tl-photo')[idx].querySelector('input').click();
+}
+</script>
+</body>
+</html>
