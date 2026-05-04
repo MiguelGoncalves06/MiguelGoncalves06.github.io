@@ -1,12 +1,7 @@
-/* ════════════════════════════════════
-   script.js — Feliz Aniversário Luinara
-   ════════════════════════════════════ */
-
-/* ── PARTICLES ── */
 const pc   = document.getElementById('particles');
 const cols = ['#f9c8d4','#f4a7bb','#e07f97','#c4607b','#ffeef3','#ffd4de'];
 
-// Pétalas caindo
+
 for (let i = 0; i < 36; i++) {
   const p = document.createElement('div');
   p.className = 'petal';
@@ -23,7 +18,6 @@ for (let i = 0; i < 36; i++) {
   pc.appendChild(p);
 }
 
-// Estrelinhas piscando
 for (let i = 0; i < 60; i++) {
   const s = document.createElement('div');
   s.className = 'sparkle';
@@ -38,7 +32,6 @@ for (let i = 0; i < 60; i++) {
   pc.appendChild(s);
 }
 
-// Corações flutuando
 ['💕','💗','🌸','✨','💓','💖'].forEach(e => {
   for (let j = 0; j < 2; j++) {
     const h = document.createElement('div');
@@ -54,7 +47,6 @@ for (let i = 0; i < 60; i++) {
   }
 });
 
-/* ── SCROLL REVEAL — geral ── */
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) e.target.classList.add('visible');
@@ -63,8 +55,6 @@ const obs = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-/* ── SCROLL REVEAL — itens da timeline com stagger ── */
-// Cada card entra com um pequeno atraso crescente
 const tlObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -79,7 +69,6 @@ for (let i = 0; i < 11; i++)  {
   if (el) tlObs.observe(el);
 }
 
-/* ── SPINE GROW — linha central cresce ao entrar na tela ── */
 const spineObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) document.getElementById('tlSpine').classList.add('grow');
@@ -88,8 +77,7 @@ const spineObs = new IntersectionObserver(entries => {
 
 spineObs.observe(document.getElementById('tlWrap'));
 
-/* ── STATS COUNTER ── */
-// ✏️ Troque TARGET pelo número de anos correto
+
 const TARGET = 17;
 let count = 0;
 const s1 = document.getElementById('s1');
@@ -103,7 +91,6 @@ function animCount() {
 }
 setTimeout(animCount, 1400);
 
-/* ── CONFETTI (canvas) ── */
 const canvas = document.getElementById('cc');
 const ctx    = canvas.getContext('2d');
 
@@ -155,7 +142,6 @@ function drawC() {
   if (pieces.length > 0) requestAnimationFrame(drawC);
 }
 
-/* ── CAKE — bounce + confetes ao clicar ── */
 function cakeClick(e) {
   const svg = document.getElementById('cakeSvg');
   const r   = svg.getBoundingClientRect();
